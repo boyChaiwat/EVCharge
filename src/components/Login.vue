@@ -1,20 +1,5 @@
 <template>
     <div>
-        <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="120px" class="demo-ruleForm">
-            <el-form-item label="Password" prop="pass">
-                <el-input type="password" v-model="ruleForm2.pass" auto-complete="off"></el-input>
-            </el-form-item>
-            <el-form-item label="Confirm" prop="checkPass">
-                <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off"></el-input>
-            </el-form-item>
-            <el-form-item label="Age" prop="age">
-                <el-input v-model.number="ruleForm2.age"></el-input>
-            </el-form-item>
-            <el-form-item>
-                <el-button type="primary" @click="submitForm('ruleForm2')">Submit</el-button>
-                <el-button @click="resetForm('ruleForm2')">Reset</el-button>
-            </el-form-item>
-        </el-form>
 
         <div class="form-signin">
             <h4>SignIn With FaceBook</h4>

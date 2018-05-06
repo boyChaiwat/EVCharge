@@ -38,13 +38,7 @@
                     <i class="el-icon-service"></i>
                     <span slot="title">Navigator Four</span>
                 </el-menu-item>
-
-                <a href="login">
-                    <el-menu-item index="6">
-                        <i class="fas fa-sign-in-alt"></i>
-                        <span slot="title">SIGN IN</span>
-                    </el-menu-item>
-                </a>
+                
                 
                 <div v-if="currentUser">
                     <el-menu-item index="7">
@@ -53,7 +47,13 @@
                     </el-menu-item>
 
                     <el-menu-item index="8" @click="signOut">
-                        <span slot="title">SIGN OUT</span>
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span slot="title">Sign Out</span>
+                    </el-menu-item>
+                </div>
+                <div v-else>
+                    <el-menu-item index="6" class="fb-singin" @click="fbSignIn">
+                        <span slot="title">Sign In With Facebook</span>
                     </el-menu-item>
                 </div>
             </div>
@@ -72,10 +72,17 @@
   .menu-footer {
       margin-top: 300px;
   }
+
+  .fb-singin {
+      height: 130px;
+      background-image: url('../assets/facebook-signin.png');
+      background-position: center;
+      background-size: cover;
+  }
 </style>
 
 <script>
-    import {dbAuth} from "../firebaseConfig"
+    import {dbAuth,provider,userRef} from "../firebaseConfig.js";
     export default {
         data() {
             return {
@@ -97,12 +104,47 @@
             handleClose(key, keyPath) {
                 console.log(key, keyPath)
             },
+            fbSignIn : function () {
+                let _this = this
+
+                dbAuth.signInWithPopup(provider).then(function(result) {
+                    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+                    var token = result.credential.accessToken;
+                    // The signed-in user info.
+                    var user = result.user;
+
+                    _this.$router.replace('home')
+                    console.log(user)
+                    // alert("sd")
+                    userRef.child(user.uid).set({
+                        displayName:user.displayName,
+                        photoURL:user.photoURL,
+                        facebookUid:user.providerData[0].uid
+                    })
+                    // userRef.child(user.uid).child("photoURL/"+user.photoURL).push("s")
+                    // console.log(user)
+                    // ...
+
+                }).catch(function(error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // The email of the user's account used.
+                    var email = error.email;
+                    // The firebase.auth.AuthCredential type that was used.
+                    var credential = error.credential;
+
+                    // console.log(errorCode+' : '+errorMessage+' : '+email+' : '+credential)
+                    // ...
+                });
+            },
             signOut:function () {
                 let _this = this
                 dbAuth.signOut().then(() => {
-                    _this.$router.push({name: 'login'})
+                    _this.$router.push({name: 'home'})
                 })
             },
+
         }
     }
 </script>
