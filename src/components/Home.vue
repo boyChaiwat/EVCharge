@@ -32,11 +32,11 @@
                             <el-card shadow="always" class="box-status-right">
                                 <div class="status-tree">
                                     <i class="fas fa-bolt"></i>
-                                    <h2>50​+</h2>
+                                    <h2>55+</h2>
                                     <label>Station</label>
                                 </div>
                             </el-card>
-                            <el-carousel indicator-position="outside" height="100vh">
+                            <el-carousel indicator-position="none" height="100vh">
                                 <el-carousel-item v-for="item in items" :key="item.id">
                                     <h3>
                                         <div :style="fullImgBg(item.imageUrl)"></div>
@@ -87,6 +87,9 @@
 </script>
 
 <style scoped>
+    el-container {
+        position: absolute;
+    }
     .el-main {
         padding: 0;
     }
@@ -135,20 +138,23 @@
         padding: 16px;
         margin-top: 30px;
         margin-right: 50px;
+        cursor: pointer;
         float: right;
         /* position: absolute;
         z-index: 100; */
     }
 
     .box-search label {
+        font-family: 'Prompt', sans-serif;
         padding-left: 15px;
+        cursor: pointer;
     }
 
     .box-status-left {
         width: 68%;
         height: 160px;
         border: 0;
-        margin-top: 60px;
+        margin-top: 65px;
         float: right;
         z-index: 101;
     }
@@ -158,7 +164,7 @@
         height: 160px;
         background-color: rgb(102, 194, 58);
         border: 0;
-        top: 505px;
+        top: 501px;
         position: absolute;
         float: left;
         z-index: 101;
