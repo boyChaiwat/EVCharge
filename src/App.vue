@@ -2,19 +2,25 @@
   <div id="app">
     <Header/>
     <router-view/>
+    <!-- <router-link to="/home"></router-link>
+    <router-link to="/Map"></router-link> -->
+    <!-- <router-view></router-view> -->
     <!-- <Footer/> -->
   </div>
 </template>
 
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPyTL4j1YwgmnMwuYKTZYs8VUoz3xazsQ&callback=initMap"
+        type="text/javascript"></script>
 <script>
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 
+
 export default {
   name: 'App',
   components:{
-    Header:Header,
-    Footer:Footer
+    Header,
+    Footer,
 
   }
 }
@@ -35,3 +41,4 @@ export default {
   color: #2c3e50;
 }
 </style>
+

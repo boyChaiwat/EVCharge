@@ -10,5 +10,5 @@
 </template>
 
 <script>
-export default (x => x.default || x)(require('./infoWindowImpl.js'))
+export default (function (x) { return x.default || x })(require('./infoWindowImpl.js'))
 </script>

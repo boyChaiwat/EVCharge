@@ -1,19 +1,28 @@
 <template>
     <div class="absolute">
         <el-menu default-active="2" class="el-menu-vertical-demo absolute" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-            <el-menu-item index="1" :to='home'>
-                <i class="fas fa-home"></i>
-                <span slot="title">Home</span>
+            
+            <el-menu-item index="1">
+                <router-link to="Home">
+                    <i class="fas fa-home"></i>
+                    <span slot="title">Home</span>
+                </router-link>
             </el-menu-item>
             
             <el-menu-item index="2">
-                <i class="fas fa-map"></i>
-                <span slot="title">Map</span>
+                <router-link to="Map">
+                    <i class="fas fa-map"></i>
+                    <span slot="title">Map</span>
+                </router-link>
             </el-menu-item>
+
             <el-menu-item index="3">
-                <i class="el-icon-document"></i>
-                <span slot="title">Navigator Three</span>
+                <router-link to="About">
+                    <i class="el-icon-document"></i>
+                    <span slot="title">About</span>
+                </router-link>
             </el-menu-item>
+
             <el-menu-item index="4">
                 <i class="el-icon-setting"></i>
                 <span slot="title">Navigator Four</span>

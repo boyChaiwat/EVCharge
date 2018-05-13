@@ -7,9 +7,13 @@
                         <div class="grid-content" height="100vh">
                             <div class="text-header">
                                 <h1>SEARCH <br> EVCHARGE <br> STATION</h1>
-                                <el-button class="box-search" slot="append" icon="el-icon-search" type="success" round>
-                                    <label>ค้นหาที่ชาร์จใกล้สุด</label>
-                                </el-button>
+                                
+                                    <el-button class="box-search" slot="append" icon="el-icon-search" type="success" round>
+                                        <router-link to="Map">
+                                        <label>ค้นหาที่ชาร์จใกล้สุด</label>
+                                        </router-link>
+                                    </el-button>
+                                
                             </div>
 
                             <el-card shadow="always" class="box-status-left">
@@ -55,6 +59,7 @@
     import {dbAuth,provider,userRef} from "../firebaseConfig.js";
 
     export default {
+        name: 'Home',
         data () {
             return {
                 items: [

@@ -4,5 +4,5 @@
 </template>
 
 <script>
-export default (x => x.default || x)(require('./autocompleteImpl.js'))
+export default (function (x) { return x.default || x })(require('./autocompleteImpl.js'))
 </script>
